@@ -16,6 +16,7 @@ public class MemberServiceTest {
     }
     //MemberService memberService = new MemberServiceImpl();
 
+    // beforeEach 먼저 실행하고 test실행,
     @Test
     void join() {
         //given
