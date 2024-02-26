@@ -11,6 +11,7 @@ public class MemberApp {
         //MemberService memberService = appConfig.memberService(); //memberserviceimpl이 들어가있음 memberService에
         // MemberService memberService = new MemberServiceImpl();
 
+        //스프링 컨테이너 생성
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 

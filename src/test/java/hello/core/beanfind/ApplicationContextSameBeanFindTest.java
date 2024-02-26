@@ -18,23 +18,19 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationContextSameBeanFindTest {
-
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SameBeanConfig.class);
-
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류가 발생한다.")
     void findBeanByTypeDuplicate() {
         assertThrows(NoUniqueBeanDefinitionException.class,
                 () -> ac.getBean(MemberRepository.class));
     }
-
     @Test
     @DisplayName("타입으로 조회시 같은 타이빙 둘 이상 있으면, 빈 이름을 지정하면 된다.")
     void findBeanByName() {
         MemberRepository memberRepository = ac.getBean("memberRepository1", MemberRepository.class);
         assertThat(memberRepository).isInstanceOf(MemberRepository.class);
     }
-
     @Test
     @DisplayName("특정 타입을 모두 조회하기")
     // 컨트롤 쉬프트 엔터 하면 바로 여기로 이동됨
@@ -46,7 +42,6 @@ public class ApplicationContextSameBeanFindTest {
         System.out.println("beansOfType = " + beansOfType);
         assertThat(beansOfType.size()).isEqualTo(2);
     }
-
     @Configuration //static을 쓴건 여기 클래스 안에서만 쓰겠다
     static class SameBeanConfig {
 
