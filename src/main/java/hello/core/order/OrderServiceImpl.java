@@ -12,12 +12,34 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
+    // 여기에 autowired 쓰는건 비추, 이쪽에서 set도 만들고 사용하는곳에서 new로 생성자도 만들어야가능
+    // 그럴바엔 그냥 여기 set에 autowired쓰자
+   /* private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;*/
 
+    
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    // @Autowired(required = false) 하면 필수가 아니라는 말
+    /*
+    @Autowired //수정자 의존관계       private final 에서 final을 빼고 사용
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired             //수정자 의존관계       private final 에서 final을 빼고 사용
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }*/
+
+
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("memberRepository = " + memberRepository);
+        System.out.println("discountPolicy = " + discountPolicy);
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
